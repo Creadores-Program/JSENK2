@@ -45,11 +45,11 @@
   let PluginsPathDir = new java.io.File(PathDir + "JSENK2plugins/");
   PluginsPathDir.mkdir();
   console.info("§eLoading Plugins JSENK2...");
-  for each(let plJSE in java.utils.Objects.requireNonNull(PluginsPathDir.listFiles())){
+  for each(let plJSE in java.util.Objects.requireNonNull(PluginsPathDir.listFiles())){
     if(plJSE.isDirectory() || !plJSE.getName().endsWith(".tgz")) continue;
     let DirPL = readTgz(plJSE);
   }
-  for each(let script2s in java.utils.Objects.requireNonNull(FilePathDir.listFiles())){
+  for each(let script2s in java.util.Objects.requireNonNull(FilePathDir.listFiles())){
     if(script2s.isDirectory() || !script2s.getName().endsWith(".tgz")) continue;
     let DirScript = readTgz(script2s);
   }
