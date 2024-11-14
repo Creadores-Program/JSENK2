@@ -20,7 +20,7 @@
   }
   let CommonAp = new NnClassLoader({ maven: ['org.apache.commons:commons-compress:1.27.1'] });
   function readTgz(file){
-    let source = java.nio.file.Files.newInputStream(file);
+    let source = java.nio.file.Files.newInputStream(file.toPath());
     let gzip = new java.util.zip.GZIPInputStream(source);
     let TarArchiveInputStream = CommonAp.type('org.apache.commons.compress.archives.tar.TarArchiveInputStream');
     let tar = new TarArchiveInputStream(gzip);
