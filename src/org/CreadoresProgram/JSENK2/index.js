@@ -24,13 +24,18 @@
     let gzip = new java.util.zip.GZIPInputStream(source);
     let TarArchiveInputStream = CommonAp.type('org.apache.commons.compress.archivers.tar.TarArchiveInputStream');
     let tar = new TarArchiveInputStream(gzip);
-    let dir = [];
+    let dir = {};
     try{
       let entry;
       while((entry = tar.getNextTarEntry()) != null){
-        let file = entry.getFile();
-        if(file.isDirectory()) continue;
-        dir[dir.length] = [file.getAbsolutePath(), file];
+        if(entry.isDirectory()) continue;
+        let buffer = Java.to(new Array(1024), "byte[]");
+        let bytesRead;
+        let byteArr = new java.io.ByteArrayOutputStream();
+        while((bytesRead = tar.read(buffer)) != -1){
+          byteArr.write(buffer, 0, bytesRead);
+        }
+        dir[entry.getName()] = byteArr.toByteArray();
       }
     }catch(error){
       console.error("Error in open file tgz" + error.toString());
@@ -50,9 +55,11 @@
   for each(let plJSE in java.util.Objects.requireNonNull(PluginsPathDir.listFiles())){
     if(plJSE.isDirectory() || !plJSE.getName().endsWith(".tgz")) continue;
     let DirPL = readTgz(plJSE);
+    let packManiPL = JSON.parse(new java.lang.String(DirPL["package/package.json"]));
+    execJsModern(new java.lang.String(DirPL["package/" + packManiPL.main]), packManiPL.name+"/"+packManiPL.main);
   }
   for each(let script2s in java.util.Objects.requireNonNull(FilePathDir.listFiles())){
-    if(script2s.isDirectory() || !script2s.getName().endsWith(".tgz")) continue;
+    if((script2s.isDirectory() || !script2s.getName().endsWith(".tgz")) || script2s.getAbsolutePath().startsWith(PluginsPathDir.getAbsolutePath())) continue;
     let DirScript = readTgz(script2s);
   }
 })();
