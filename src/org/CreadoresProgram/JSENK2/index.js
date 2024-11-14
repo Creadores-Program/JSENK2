@@ -33,7 +33,7 @@
         dir[dir.length] = [file.getAbsolutePath(), file];
       }
     }catch(error){
-      console.error("Error in open file tgz", error);
+      console.error("Error in open file tgz" + error.toString());
     }finally{
       source.close();
       gzip.close();
