@@ -22,7 +22,7 @@
   function readTgz(file){
     let source = java.nio.file.Files.newInputStream(file.toPath());
     let gzip = new java.util.zip.GZIPInputStream(source);
-    let TarArchiveInputStream = CommonAp.type('org.apache.commons.compress.archives.tar.TarArchiveInputStream');
+    let TarArchiveInputStream = CommonAp.type('org.apache.commons.compress.archivers.tar.TarArchiveInputStream');
     let tar = new TarArchiveInputStream(gzip);
     let dir = [];
     try{
