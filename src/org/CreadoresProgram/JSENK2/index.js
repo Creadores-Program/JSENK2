@@ -33,11 +33,13 @@
         dir[dir.length] = [file.getAbsolutePath(), file];
       }
     }catch(error){
+      console.error("Error in open file tgz", error);
     }finally{
       source.close();
       gzip.close();
       tar.close();
     }
+    return dir;
   }
   let PathDir = server.getPluginPath() + "JSENK2/";
   let FilePathDir = new java.io.File(PathDir);
