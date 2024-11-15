@@ -72,10 +72,13 @@
     for each(let filePLT in Object.keys(DirPL)){
       if(filePLT.endsWith(".js")){
         execJsModern(new java.lang.String(DirPL[filePLT]), "pluginsJSENK2/"+packManiPL.name+filePLT.replace("package", ""));
+        continue;
       }
       if(filePLT.endsWith(".json")){
         execJsModern("module.exports = "+ new java.lang.String(DirPL[filePLT]) + ";", "pluginsJSENK2/"+packManiPL.name+filePLT.replace("package", ""));
+        continue;
       }
+      execJsModern("module.exports = '"+new java.lang.String(DirScript[fileScr]).replaceAll("'", "\\'")+"';", fileScr.replace("package", "pluginsJSENK2/"+packManiSc.name));
     }
   }
   console.info("§eLoading Scripts...");
@@ -91,16 +94,20 @@
     for each(let fileScr in Object.keys(DirScript)){
       if(fileScr.endsWith(".js")){
         execJsModern(new java.lang.String(DirScript[fileScr]), fileScr.replace("package", packManiSc.name));
+        continue;
       }
       if(fileScr.endsWith(".ts")){
         if(pluginsJSENK2.indexOf("typescript") != -1){
           let typesc = contexto2eng.require("pluginsJSENK2/typescript/typescript.js");
           execJsModern(typesc.transpile(new java.lang.String(DirScript[fileScr])), fileScr.replace("package", packManiSc.name));
+          continue;
         }
       }
       if(fileScr.endsWith(".json")){
         execJsModern("module.exports = "+ new java.lang.String(DirScript[fileScr]) +";", fileScr.replace("package", packManiSc.name));
+        continue;
       }
+      execJsModern("module.exports = '"+new java.lang.String(DirScript[fileScr]).replaceAll("'", "\\'")+"';", fileScr.replace("package", packManiSc.name));
     }
     script.registerScript({
       name: packManiSc.name,
