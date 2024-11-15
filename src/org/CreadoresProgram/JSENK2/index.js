@@ -10,7 +10,13 @@
   delete $$_subEngineBabelCom;
   delete subEng;
   function compile(code){
-    return Babel.transform(code,{presets:['es2015']}).code;
+    let codecom = "";
+    try{
+      codecom = Babel.transform(code,{presets:['es2015']}).code;
+    }catch(err){
+      codecom = code;
+    }
+    return codecom;
   }
   function execJsModern(code, path){
     path = (path || "anonymous/"+Math.random());
