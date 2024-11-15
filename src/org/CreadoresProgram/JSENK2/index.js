@@ -91,6 +91,28 @@
       continue;
     }
     console.info("§eLoading "+packManiSc.name+"...");
+    if(packManiSc.dependencies != null){
+      for each(let depend in Object.keys(packManiSc.dependencies)){
+        if(depend.startsWith("pluginNukkit/")){
+          if(manager.getPlugin(depend.replace("pluginNukkit/", "")) == null){
+            console.error("Plugin "+depend.replace("pluginNukkit/", "")+" Not found!");
+            continue;
+          }
+        }
+        if(depend.startsWith("scriptJSENK/")){
+          if(script.getScriptByName(depend.replace("scriptJSENK/", "")) == null){
+            console.warning("Script "+depend.replace("scriptJSENK/", "")+" Not found or not Load!");
+            continue;
+          }
+        }
+        if(depend.startsWith("pluginsJSENK2/")){
+          if(pluginsJSENK2.indexOf(depend.replace("pluginsJSENK2/", "")) == -1){
+            console.error("Plugin JSENK2 "+depend.replace("pluginsJSENK2/", "")+" Not found!");
+            continue;
+          }
+        }
+      }
+    }
     for each(let fileScr in Object.keys(DirScript)){
       if(fileScr.endsWith(".js")){
         execJsModern(new java.lang.String(DirScript[fileScr]), fileScr.replace("package", packManiSc.name));
