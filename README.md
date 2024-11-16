@@ -91,3 +91,6 @@ JSENK2 code is compiled with Babel Standalone(It is not guaranteed to compile ne
 
 ## More Info
 Read [JSEngineNK API](https://cloudburstmc.org/resources/jsenginenk.939/)
+
+## Recommendations
+just use one API!
