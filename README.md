@@ -7,7 +7,7 @@ JSEngineNK 2 Run Node.JS in nukkit!
 
 [JSEngineNK API 1](https://cloudburstmc.org/resources/jsenginenk.939/)
 
-when creating the plugin: having NPM by Node.js
+when creating the plugin or script: having NPM by Node.js
 
 ## How Install?
 Unzip the releases Zip file into the plugins/JSEngineNK folder
