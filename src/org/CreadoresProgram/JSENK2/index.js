@@ -85,7 +85,7 @@
   for each(let script2s in java.util.Objects.requireNonNull(FilePathDir.listFiles())){
     if((script2s.isDirectory() || !script2s.getName().endsWith(".tgz")) || script2s.getAbsolutePath().startsWith(PluginsPathDir.getAbsolutePath())) continue;
     let DirScript = readTgz(script2s);
-    let packManiSc = JSON.parse(new java.lang.String(DirPL["package/package.json"]));
+    let packManiSc = JSON.parse(new java.lang.String(DirScript["package/package.json"]));
     if(script.getScriptByName(packManiSc.name) != null){
       console.error("§cScript "+packManiSc.name+" Duplicate, remove one");
       continue;
