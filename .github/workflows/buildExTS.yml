@@ -18,5 +18,5 @@ jobs:
      - name: Upload Artifact
        uses: actions/upload-artifact@v4
        with:
-         name: Example
+         name: ExampleTS
          path: exampleTS/script/TestScriptJSENK2TS-1.0.0.tgz
