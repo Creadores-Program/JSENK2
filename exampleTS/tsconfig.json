@@ -1,0 +1,7 @@
+{
+    "compilerOptions": {
+        "outDir": "./script",
+        "module": "CommonJS",
+        "target": "ES2015"
+    }
+}
