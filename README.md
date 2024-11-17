@@ -94,3 +94,6 @@ Read [JSEngineNK API](https://cloudburstmc.org/resources/jsenginenk.939/)
 
 ## Recommendations
 just use one API!
+
+## Run other languages based on JavaScript
+You can check out the examples in the repo and Github actions to see how it works
