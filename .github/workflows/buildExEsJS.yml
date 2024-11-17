@@ -9,7 +9,7 @@ jobs:
        uses: actions/setup-node@v4
        with:
          node-version: "20.x"
-     - run: npm i -g es.js
+     - run: npm i -g es.js @putout/bundle
        working-directory: ./exampleEsJS
      - run: esjs compilar -ruta index.esjs -r script/
        working-directory: ./exampleEsJS
