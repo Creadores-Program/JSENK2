@@ -11,7 +11,7 @@ jobs:
          node-version: "20.x"
      - run: npm i -g es.js @putout/bundle
        working-directory: ./exampleEsJS
-     - run: esjs compilar index.esjs /script/index.js
+     - run: esjs compilar . /script/index.js
        working-directory: ./exampleEsJS
      - run: npm pack
        working-directory: ./exampleEsJS/script
