@@ -1,1 +1,14 @@
-
+funcion activar(){
+  consola.info("Hola Mundo");
+}
+funcion cargar(){
+  consola.info("Cargando Mundo");
+}
+funcion desactivar(){
+  consola.info("Adios Mundo");
+}
+module.exports = {
+    onEnable: activar,
+    onDisable: desactivar,
+    onLoad: cargar
+};
