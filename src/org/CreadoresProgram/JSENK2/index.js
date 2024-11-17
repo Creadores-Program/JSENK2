@@ -1,5 +1,12 @@
 (function(){
   console.info("§eEnable JSENK API 2...");
+  script.registerScript({
+      name: "JSENK",
+      version: "2.0.0",
+      description: "Run Node.JS in nukkit!",
+      website: "https://github.com/Creadores-Program/JSENK2/",
+      author: "Creadores Program"
+  });
   let subEng = Java.type("javax.script.ScriptEngineManager");
   let $$_subEngineBabelCom = new subEng().getEngineByMimeType("text/javascript");
   $$_subEngineBabelCom.eval("load('https://cdn.jsdelivr.net/npm/babel-standalone@6.26.0/babel.min.js')");
@@ -117,13 +124,6 @@
       if(fileScr.endsWith(".js")){
         execJsModern(new java.lang.String(DirScript[fileScr]), fileScr.replace("package", packManiSc.name));
         continue;
-      }
-      if(fileScr.endsWith(".ts")){
-        if(pluginsJSENK2.indexOf("typescript") != -1){
-          let typesc = contexto2eng.require("pluginsJSENK2/typescript/typescript.js");
-          execJsModern(typesc.transpile(new java.lang.String(DirScript[fileScr])), fileScr.replace("package", packManiSc.name));
-          continue;
-        }
       }
       if(fileScr.endsWith(".json")){
         execJsModern("module.exports = "+ new java.lang.String(DirScript[fileScr]) +";", fileScr.replace("package", packManiSc.name));
