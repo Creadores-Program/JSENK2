@@ -13,6 +13,7 @@ jobs:
        working-directory: ./exampleEsJS
      - run: esjs compilar ./ -r
        working-directory: ./exampleEsJS
+     - run: find . -name "*.esjs" -delete
      - run: npm pack
        working-directory: ./exampleEsJS
      - name: Upload Artifact
