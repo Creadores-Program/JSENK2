@@ -2,7 +2,7 @@
   console.info("§eEnable JSENK API 2...");
   script.registerScript({
       name: "JSENK",
-      version: "2.0.0",
+      version: "2.0.1",
       description: "Run Node.JS in nukkit!",
       website: "https://github.com/Creadores-Program/JSENK2/",
       author: "Creadores Program"
@@ -85,7 +85,9 @@
         execJsModern("module.exports = "+ new java.lang.String(DirPL[filePLT]) + ";", "pluginsJSENK2/"+packManiPL.name+filePLT.replace("package", ""));
         continue;
       }
-      execJsModern("module.exports = '"+new java.lang.String(DirScript[fileScr]).replaceAll("'", "\\'")+"';", fileScr.replace("package", "pluginsJSENK2/"+packManiSc.name));
+      contexto2eng.require.register("pluginsJSENK2/"+fileScr.replace("package", packManiPL.name), function(module){
+        module.exports = new java.lang.String(DirScript[filePLT]);
+      });
     }
   }
   console.info("§eLoading Scripts...");
@@ -104,6 +106,11 @@
           if(manager.getPlugin(depend.replace("pluginNukkit/", "")) == null){
             console.error("Plugin "+depend.replace("pluginNukkit/", "")+" Not found!");
             continue;
+          }
+          if(contexto2eng.require(depend) == null){
+            contexto2eng.require.register(depend, function(module){
+              module.exports = manager.getPlugin(depend.replace("pluginNukkit/", ""));
+            });
           }
         }
         if(depend.startsWith("scriptJSENK/")){
@@ -129,7 +136,9 @@
         execJsModern("module.exports = "+ new java.lang.String(DirScript[fileScr]) +";", fileScr.replace("package", packManiSc.name));
         continue;
       }
-      execJsModern("module.exports = '"+new java.lang.String(DirScript[fileScr]).replaceAll("'", "\\'")+"';", fileScr.replace("package", packManiSc.name));
+      contexto2eng.require.register(fileScr.replace("package", packManiSc.name), function(module){
+        module.exports = new java.lang.String(DirScript[fileScr]);
+      });
     }
     script.registerScript({
       name: packManiSc.name,

@@ -63,7 +63,7 @@ module.exports = {
 };
 
 // Nukkit plugins:
-let plugin = manager.getPlugin("pluginName");
+let plugin = require("pluginNukkit/pluginName");
 
 // Scripts JSEngineNK2
 let script = require("nameScript/file.js");
