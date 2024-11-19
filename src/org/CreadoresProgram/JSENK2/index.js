@@ -86,7 +86,7 @@
         continue;
       }
       contexto2eng.require.register("pluginsJSENK2/"+fileScr.replace("package", packManiPL.name), function(module){
-        module.exports = new java.lang.String(DirScript[filePLT]);
+        module.exports = new java.lang.String(DirPL[filePLT]);
       });
     }
   }
