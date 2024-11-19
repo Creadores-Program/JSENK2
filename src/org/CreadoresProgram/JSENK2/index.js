@@ -85,10 +85,7 @@
         execJsModern("module.exports = "+ new java.lang.String(DirPL[filePLT]) + ";", "pluginsJSENK2/"+packManiPL.name+filePLT.replace("package", ""));
         continue;
       }
-      function Traspa(module){
-        module.exports = new java.lang.String(DirPL[filePLT]);
-      }
-      contexto2eng.require.register("pluginsJSENK2/"+fileScr.replace("package", packManiPL.name), Traspa);
+      execJsModern("module.exports = `"+new java.lang.String(DirPL[filePLT])+"`;", "pluginsJSENK2/"+fileScr.replace("package", packManiPL.name));
     }
   }
   console.info("§eLoading Scripts...");
@@ -137,10 +134,7 @@
         execJsModern("module.exports = "+ new java.lang.String(DirScript[fileScr]) +";", fileScr.replace("package", packManiSc.name));
         continue;
       }
-      function Traspa(module){
-        module.exports = new java.lang.String(DirScript[fileScr]);
-      }
-      contexto2eng.require.register(fileScr.replace("package", packManiSc.name), Traspa);
+      execJsModern("module.exports = `"+new java.lang.String(DirScript[fileScr])+"`;", fileScr.replace("package", packManiSc.name));
     }
     script.registerScript({
       name: packManiSc.name,
