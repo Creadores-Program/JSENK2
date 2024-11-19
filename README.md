@@ -1,4 +1,6 @@
 # JSENK2
+![NPM](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white) ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
+
 JSEngineNK 2 Run Node.JS in nukkit!
 
 [JSEngineNK](https://cloudburstmc.org/resources/jsenginenk.939/) plugin API 2 is here!
