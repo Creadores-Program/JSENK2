@@ -85,7 +85,7 @@
         execJsModern("module.exports = "+ new java.lang.String(DirPL[filePLT]) + ";", "pluginsJSENK2/"+packManiPL.name+filePLT.replace("package", ""));
         continue;
       }
-      execJsModern("module.exports = `"+new java.lang.String(DirPL[filePLT])+"`;", "pluginsJSENK2/"+fileScr.replace("package", packManiPL.name));
+      execJsModern("module.exports = `"+new java.lang.String(DirPL[filePLT])+"`;", "pluginsJSENK2/"+filePLT.replace("package", packManiPL.name));
     }
   }
   console.info("§eLoading Scripts...");
