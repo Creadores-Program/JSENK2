@@ -2,7 +2,7 @@
   console.info("§eEnable JSENK API 2...");
   script.registerScript({
       name: "JSENK",
-      version: "2.0.1",
+      version: "2.0.2",
       description: "Run Node.JS in nukkit!",
       website: "https://github.com/Creadores-Program/JSENK2/",
       author: "Creadores Program"
@@ -85,7 +85,7 @@
         execJsModern("module.exports = "+ new java.lang.String(DirPL[filePLT]) + ";", "pluginsJSENK2/"+packManiPL.name+filePLT.replace("package", ""));
         continue;
       }
-      execJsModern("module.exports = `"+new java.lang.String(DirPL[filePLT])+"`;", "pluginsJSENK2/"+filePLT.replace("package", packManiPL.name));
+      execJsModern("module.exports = `"+new java.lang.String(DirPL[filePLT]).replaceAll("`", "\\`")+"`;", "pluginsJSENK2/"+filePLT.replace("package", packManiPL.name));
     }
   }
   console.info("§eLoading Scripts...");
@@ -134,7 +134,7 @@
         execJsModern("module.exports = "+ new java.lang.String(DirScript[fileScr]) +";", fileScr.replace("package", packManiSc.name));
         continue;
       }
-      execJsModern("module.exports = `"+new java.lang.String(DirScript[fileScr])+"`;", fileScr.replace("package", packManiSc.name));
+      execJsModern("module.exports = `"+new java.lang.String(DirScript[fileScr]).replaceAll("`", "\\`")+"`;", fileScr.replace("package", packManiSc.name));
     }
     script.registerScript({
       name: packManiSc.name,
@@ -144,8 +144,14 @@
       author: packManiSc.author
     });
     let mainSc = contexto2eng.require(packManiSc.name+"/"+packManiSc.main);
-    script.addEventListener("Enable", (mainSc.onEnable || new Function()));
-    script.addEventListener("Load", (mainSc.onLoad || new Function()));
-    script.addEventListener("Disable", (mainSc.onDisable || new Function()));
+    if(mainSc.onEnable != null){
+      script.addEventListener("Enable", mainSc.onEnable);
+    }
+    if(mainSc.onLoad != null){
+      script.addEventListener("Load", mainSc.onLoad);
+    }
+    if(mainSc.onDisable != null){
+      script.addEventListener("Disable", mainSc.onDisable);
+    }
   }
 })();

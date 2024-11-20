@@ -9,9 +9,6 @@ function disable(): void {
 function load(): void {
     console.info("Cargando Mundo!");
 }
-
-export const module = {
-    onEnable: enable,
-    onDisable: disable,
-    onLoad: load
-};
+export const onEnable = enable;
+export const onLoad = load;
+export const onDisable = disable;
