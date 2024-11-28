@@ -105,11 +105,9 @@
             console.error("Plugin "+depend.replace("pluginNukkit/", "")+" Not found!");
             continue;
           }
-          if(contexto2eng.require(depend) == null){
-            contexto2eng.require.register(depend, function(module){
-              module.exports = manager.getPlugin(depend.replace("pluginNukkit/", ""));
-            });
-          }
+          contexto2eng.require.register(depend, function(module){
+            module.exports = manager.getPlugin(depend.replace("pluginNukkit/", ""));
+          });
         }
         if(depend.startsWith("scriptJSENK/")){
           if(script.getScriptByName(depend.replace("scriptJSENK/", "")) == null){
