@@ -116,7 +116,7 @@
         }
         if(depend.startsWith("java/maven/")){
           contexto2eng.require.register(depend, function(module){
-            module.exports = new NnClassLoader({ urls: [depend.replace("java/maven/", "")+":"+packManiSc.dependencies[depend]] });
+            module.exports = new NnClassLoader({ maven: [depend.replace("java/maven/", "")+":"+packManiSc.dependencies[depend]] });
           });
         }
         if(depend.startsWith("scriptJSENK/")){
