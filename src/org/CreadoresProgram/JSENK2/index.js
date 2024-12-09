@@ -109,6 +109,16 @@
             module.exports = manager.getPlugin(depend.replace("pluginNukkit/", ""));
           });
         }
+        if(depend.startsWith("java/url/")){
+          contexto2eng.require.register(depend, function(module){
+            module.exports = new NnClassLoader({ urls: [depend.replace("java/url/", "")] });
+          });
+        }
+        if(depend.startsWith("java/maven/")){
+          contexto2eng.require.register(depend, function(module){
+            module.exports = new NnClassLoader({ urls: [depend.replace("java/maven/", "")+":"+packManiSc.dependencies[depend]] });
+          });
+        }
         if(depend.startsWith("scriptJSENK/")){
           if(script.getScriptByName(depend.replace("scriptJSENK/", "")) == null){
             console.warning("Script "+depend.replace("scriptJSENK/", "")+" Not found or not Load!");
