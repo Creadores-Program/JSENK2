@@ -115,8 +115,14 @@
           });
         }
         if(depend.startsWith("java/maven/")){
+          let subDep = depend.replace("java/maven/", "");
+          let repo = [];
+          if(subDep.indexOf("/mavenRe/") > -1){
+            repo[0] = subDep.split("/mavenRe/")[0];
+            subDep = subDep.split("/mavenRe/")[1];
+          }
           contexto2eng.require.register(depend, function(module){
-            module.exports = new NnClassLoader({ maven: [depend.replace("java/maven/", "")+":"+packManiSc.dependencies[depend]] });
+            module.exports = new NnClassLoader({ maven: [subDep+":"+packManiSc.dependencies[depend]], mavenRe: repo });
           });
         }
         if(depend.startsWith("scriptJSENK/")){
